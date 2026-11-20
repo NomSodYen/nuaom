@@ -6,7 +6,7 @@ import store from './store.js';
 import * as calc from './calc/index.js';
 
 const { h, icon } = ui;
-export const BUILD = '2026-11-20.2';
+export const BUILD = '2026-11-20.3';
 
 const TABS = [
   { path: '', icon: 'home', label: 'หน้าแรก' },

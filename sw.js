@@ -1,5 +1,5 @@
 // หนูออม service worker — app shell offline. API calls (script.google.com) always go to network.
-const BUILD = '2026-11-20.2';
+const BUILD = '2026-11-20.3';
 const CACHE = 'nuaom-' + BUILD;
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/theme.css', 'vendor/chart.umd.min.js',

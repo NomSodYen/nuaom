@@ -68,9 +68,26 @@ export default {
       else if (!data) nodes.push(ui.card({ title: 'กราฟราคาทอง', icon: 'chart-line', body: ui.skeleton(4) }));
       else {
         const cutoff = Date.now() - range * 86400000;
-        const hist = (data.history || []).filter((r) => fmt.toDate(r.time) && fmt.toDate(r.time).getTime() >= cutoff);
+        let hist = (data.history || []).filter((r) => fmt.toDate(r.time) && fmt.toDate(r.time).getTime() >= cutoff);
+        let estimated = false;
+        // The backend only starts recording Thai prices on install day. Until enough real history exists,
+        // estimate it from world gold × THB/USD (96.5% gold, 15.244 g per baht-weight, 31.1035 g per oz),
+        // calibrated to today's real association price so the line ends exactly on the real number.
+        const lt = data.latest || (store.get().gold || {}).latest;
+        const wd = data.world || { t: [], c: [] };
+        if (hist.length < 10 && lt && lt.spotUsd && lt.thbUsd && (wd.c || []).length) {
+          const k = (15.244 * 0.965) / 31.1035;
+          const premium = Number(lt.barSell) - Number(lt.spotUsd) * Number(lt.thbUsd) * k;
+          hist = wd.t.map((t, i) => ({ time: t, bar_sell: Number(wd.c[i]) * Number(lt.thbUsd) * k + premium }))
+            .filter((r) => r.time * 1000 >= cutoff && Number.isFinite(r.bar_sell));
+          estimated = hist.length > 0;
+        }
         const box1 = h('div', { class: 'chart-box' });
-        nodes.push(ui.card({ title: 'ราคาทองแท่ง (ขายออก)', icon: 'chart-line', sub: 'บาทต่อบาททองคำ', body: hist.length ? box1 : h('div', { class: 'faint center' }, 'ยังไม่มีข้อมูลย้อนหลัง') }));
+        nodes.push(ui.card({
+          title: 'ราคาทองแท่ง (ขายออก)', icon: 'chart-line',
+          sub: estimated ? 'ค่าประมาณจากทองโลก × ค่าเงิน (หนูออมกำลังเก็บประวัติราคาจริงทุกวัน)' : 'บาทต่อบาททองคำ',
+          body: hist.length ? box1 : h('div', { class: 'faint center' }, 'ยังไม่มีข้อมูลย้อนหลัง'),
+        }));
         if (hist.length) post.push(() => {
           const c = ctx.chart(box1, {
             type: 'line',
