@@ -155,7 +155,7 @@ const QUIZ = [
 ];
 
 export default {
-  title: (params) => (params && params[0] ? 'บทเรียน' : 'ห้องเรียนหนูออม'),
+  title: (params) => (params && params[0] ? 'บทเรียน' : 'ห้องเรียน HOON'),
   async render(root, params, ctx) {
     const { ui, nav } = ctx;
     const { h, icon } = ui;

@@ -204,7 +204,7 @@ export default {
 
       // ---------- about ----------
       out.push(ui.card({
-        body: h('div', { class: 'row' }, ui.mascot('happy', 52), h('div', { class: 'grow' }, h('b', null, 'หนูออม เวอร์ชัน 1.0'), h('div', { class: 'small muted' }, 'ผู้ช่วยเก็บออมและติดตามหุ้น ทอง คริปโต และปันผล'))),
+        body: h('div', { class: 'row' }, ui.mascot('happy', 52), h('div', { class: 'grow' }, h('b', null, 'HOON เวอร์ชัน 1.0'), h('div', { class: 'small muted' }, 'ผู้ช่วยเก็บออมและติดตามหุ้น ทอง คริปโต และปันผล'))),
       }));
       root.replaceChildren(h('div', null, out), ui.disclaimer());
     };

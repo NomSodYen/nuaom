@@ -19,7 +19,7 @@ export function last12Net(calc, tx, fx) {
 }
 
 export default {
-  title: 'หนูออม',
+  title: 'HOON',
   async render(root, params, ctx) {
     const { store, ui, fmt, calc, nav } = ctx;
     const { h } = ui;

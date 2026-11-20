@@ -6,7 +6,7 @@ import store from './store.js';
 import * as calc from './calc/index.js';
 
 const { h, icon } = ui;
-export const BUILD = '2026-11-20.3';
+export const BUILD = '2026-11-20.4';
 
 const TABS = [
   { path: '', icon: 'home', label: 'หน้าแรก' },
@@ -61,7 +61,7 @@ applyTheme();
 
 // ---------- shell ----------
 const app = document.getElementById('app');
-const topTitle = h('div', { class: 'title' }, 'หนูออม');
+const topTitle = h('div', { class: 'title' }, 'HOON');
 const backBtn = h('button', { class: 'icon-btn hidden', 'aria-label': 'ย้อนกลับ', onClick: () => history.length > 1 ? history.back() : nav('') }, icon('chevron-left'));
 const logo = h('span', { class: 'logo', style: { cursor: 'pointer' }, onClick: () => nav('') }, ui.mascot('happy', 38));
 const offline = h('span', { class: 'offline-dot hidden', title: 'ออฟไลน์' });
@@ -170,8 +170,8 @@ async function render() {
   try {
     const mod = (await import(`./pages/${name}.js`)).default;
     if (seq !== renderSeq) return;
-    topTitle.textContent = typeof mod.title === 'function' ? mod.title(params) : (mod.title || 'หนูออม');
-    document.title = `${topTitle.textContent} · หนูออม`;
+    topTitle.textContent = typeof mod.title === 'function' ? mod.title(params) : (mod.title || 'HOON');
+    document.title = `${topTitle.textContent} · HOON`;
     const root = h('div', { class: 'page-enter' });
     pageEl.replaceChildren(root);
     const ret = await mod.render(root, params, ctx);

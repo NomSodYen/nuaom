@@ -1,7 +1,7 @@
 {
-  "name": "หนูออม",
-  "short_name": "หนูออม",
-  "description": "ผู้ช่วยดูพอร์ตหุ้น ปันผล ทอง และคริปโต",
+  "name": "HOON",
+  "short_name": "HOON",
+  "description": "HOON — ผู้ช่วยดูพอร์ตหุ้น ปันผล ทอง และคริปโต",
   "lang": "th",
   "start_url": "./#/",
   "scope": "./",
