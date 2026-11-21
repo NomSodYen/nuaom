@@ -157,7 +157,7 @@ export default {
       } else {
         nodes.push(ui.card({
           title: 'ข่าวเช้า', icon: 'news',
-          body: h('div', { class: 'row' }, ui.mascot('sleep', 44), h('div', { class: 'small muted grow' }, 'ทีมข่าวจะส่งสรุปทุกเช้าวันทำการ 08:30')),
+          body: h('div', { class: 'row' }, ui.mascot('sleep', 44), h('div', { class: 'small muted grow' }, 'สั่งทีมข่าวได้ทุกเมื่อผ่าน Claude แล้วสรุปจะมาขึ้นที่นี่')),
         }));
       }
 

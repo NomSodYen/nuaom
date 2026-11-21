@@ -48,7 +48,7 @@ export default {
       const seg = ui.segment([{ value: 'ALL', label: 'ทั้งหมด' }, { value: 'DAILY', label: 'ข่าวเช้า' }, { value: 'WEEKLY', label: 'สรุปสัปดาห์' }], filter, (v) => { filter = v; drawList(); });
       let body;
       if (!all.length) {
-        body = ui.empty({ mood: 'sleep', title: 'ยังไม่มีข่าวจากทีม HOON', text: 'ทีมข่าวจะส่งสรุปมาทุกเช้าวันทำการ 08:30 และสรุปสัปดาห์วันเสาร์ 09:00' });
+        body = ui.empty({ mood: 'sleep', title: 'ยังไม่มีข่าวจากทีม HOON', text: 'สั่งทีมข่าวได้ทุกเมื่อผ่าน Claude แล้วสรุปจะมาขึ้นที่นี่' });
       } else if (!rows.length) {
         body = ui.empty({ mood: 'sleep', title: 'ไม่มีข่าวในหมวดนี้', text: 'ลองเลือกหมวด "ทั้งหมด" ดูนะ' });
       } else {
